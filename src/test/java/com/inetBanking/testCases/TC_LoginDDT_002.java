@@ -13,7 +13,7 @@ import com.inetBanking.utilities.XLUtilities;
 public class TC_LoginDDT_002 extends BaseClass
 {
 	@Test(dataProvider="LoginData")
-	public void loginDDT(String uname,String pasword) throws IOException
+	public void loginDDT(String uname,String pasword) throws IOException, InterruptedException
 	{
 		LoginPage loginPage=new LoginPage(driver);
 		loginPage.setUserName(uname);
@@ -23,6 +23,8 @@ public class TC_LoginDDT_002 extends BaseClass
 		loginPage.clickLoginButton();
 		logger.info("Login button clicked");
 		
+		Thread.sleep(3000);
+
 		if(checkAlert()==true)
 		{
 			driver.switchTo().alert().accept();
@@ -33,25 +35,23 @@ public class TC_LoginDDT_002 extends BaseClass
 		else {
 			Assert.assertTrue(true);
 			loginPage.clickLogoutButton();
+			logger.info("Login test case passed");
+			Thread.sleep(3000);
 			driver.switchTo().alert().accept();
 			driver.switchTo().defaultContent();
-			logger.info("Login test case passed");
 		}
 	}
-	
+
 	public boolean checkAlert()
 	{
-		boolean flag=false;
 		try {
 			driver.switchTo().alert();
-			Assert.assertTrue(true);
-			flag=true;
+			return true;
 		} catch (NoAlertPresentException e) {
-			e.printStackTrace();
+			return false;
 		}
-		return flag;
 	}
-	
+
 	@DataProvider(name="LoginData")
 	public String[][] getData() throws IOException
 	{
@@ -59,7 +59,7 @@ public class TC_LoginDDT_002 extends BaseClass
 		int totalRow=XLUtilities.getRowCount(path);
 		int cellCount = XLUtilities.getCellCount(path, totalRow);
 		String loginData[][]=new String[totalRow][cellCount];
-		
+
 		for(int i=1; i<=totalRow; i++)
 		{
 			for(int j=0; j<cellCount; j++)

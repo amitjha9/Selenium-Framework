@@ -29,6 +29,7 @@ public class BaseClass {
 	public String username=readConfig.getUserName();
 	public String password=readConfig.getPassword();
 	public String pageTitle = "Guru99 Bank Manager HomePage";
+	public String addCustomerPageSource="Customer Registered Successfully!!!";
 	public static WebDriver driver;
 	public static Logger logger;
 

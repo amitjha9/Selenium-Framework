@@ -8,26 +8,19 @@
   <test name="BankingApp Test">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.inetBanking.testCases.TC_LoginTest_001"/>
-      <class name="com.inetBanking.testCases.TC_LoginDDT_002"/>
+      <class name="com.inetBanking.testCases.TC_AddCustomerDDT_001"/>
     </classes>
   </test> <!-- BankingApp Test -->
   <test name="BankingApp Test(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.inetBanking.testCases.TC_LoginTest_001">
+      <class name="com.inetBanking.testCases.TC_AddCustomerDDT_001">
         <methods>
+          <include name="addCustomerDDT" invocation-numbers="1"/>
           <include name="setup"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.inetBanking.testCases.TC_LoginTest_001 -->
-      <class name="com.inetBanking.testCases.TC_LoginDDT_002">
-        <methods>
-          <include name="setup"/>
-          <include name="loginDDT" invocation-numbers="1 2 3"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.inetBanking.testCases.TC_LoginDDT_002 -->
+      </class> <!-- com.inetBanking.testCases.TC_AddCustomerDDT_001 -->
     </classes>
   </test> <!-- BankingApp Test(failed) -->
 </suite> <!-- Failed suite [inetBanking] -->
